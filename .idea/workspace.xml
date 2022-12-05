@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1adc87d-0187-4e01-8c4d-56bb15cf9516" name="Changes" comment="Add basic graphics">
-      <change afterPath="$PROJECT_DIR$/src/tetris/constants/Parameters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tetris/utility/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tetris/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetris/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetris/constants/Color.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tetris/constants/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/constants/Parameters.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tetris/field/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/field/Cell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tetris/field/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/field/Field.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tetris/figures/Figure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/figures/Figure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tetris/figures/PolyminoI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/figures/PolyminoI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tetris/figures/PolyminoO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/figures/PolyminoO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tetris/figures/PolyminoT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/figures/PolyminoT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tetris/figures/PolyminoZ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/figures/PolyminoZ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tetris/utility/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/utility/Util.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +34,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2IHCY0gCf8rDyLSfKRtJFmLtPOF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -40,14 +42,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/liaombro/Desktop/auto/proj/tetr&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/Users/liaombro/Desktop/auto/proj/tetr",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Tetris" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
@@ -144,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670005216410</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add basic graphics">
+      <created>1670196527148</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670196527148</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,5 +172,21 @@
     <MESSAGE value="Create class model" />
     <MESSAGE value="Add basic graphics" />
     <option name="LAST_COMMIT_MESSAGE" value="Add basic graphics" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/tetris/figures/Figure.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/tetris/figures/Figure.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

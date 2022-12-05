@@ -16,7 +16,7 @@ public class Game {
     private final Field field;
 
     private boolean isPaused;
-    private boolean isOver;
+    private final boolean isOver;
 
 
 
@@ -44,6 +44,7 @@ public class Game {
                     if (!isPaused) {
                         //processUserInput();
                         activeFigure.moveDown();
+                        field.setCellsArrayFromActiveFigure(activeFigure);
                         field.repaint();
                         if(!activeFigure.isMovable(Direction.DOWN) && field.isReducible()) {
                             field.reduceAll();
@@ -63,13 +64,13 @@ public class Game {
 
     public Figure newActiveFigure(){
         Random rand = new Random();
-        int direction = rand.nextInt(3);
+        int type = rand.nextInt(4);
 
         int XCoordinateActiveFigure = 20;
         int YCoordinateActiveFigure = 2;
         // rewrite
 
-        switch (direction)
+        switch (type)
         {
             case 0:
                 return new PolyminoI(XCoordinateActiveFigure,YCoordinateActiveFigure);
@@ -108,6 +109,9 @@ public class Game {
                 pause();
                 break;
         }
+        field.setCellsArrayFromActiveFigure(activeFigure);
+        field.repaint();
+
     }
 
     public void pause(){

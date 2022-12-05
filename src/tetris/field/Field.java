@@ -8,31 +8,28 @@ import tetris.figures.Figure;
 
 import java.awt.*;
 
-import static tetris.constants.Parameters.SIZE_OF_CELL;
+import static tetris.constants.Parameters.*;
 
 public class Field extends JPanel {
 
-    private final int horizontalSize;
-    private final int verticalSize;
-    private final Cell[][] CellsArray;
+    private static Cell[][] CellsArray;
+
     private StatusBar status;
     public final JFrame fieldGUI;
 
     public Field(){
         super();
         this.fieldGUI = new JFrame();
-        this.horizontalSize = Parameters.SIZE_HORIZONTAL_PX;
-        this.verticalSize = Parameters.SIZE_VERTICAL_PX;
-        fieldGUI.setSize(horizontalSize,verticalSize);
+        fieldGUI.setSize(Parameters.SIZE_HORIZONTAL_PX+50,Parameters.SIZE_VERTICAL_PX+50);
         fieldGUI.add(this);
         fieldGUI.setVisible(true);
 
-        int cellNumberX = Parameters.SIZE_HORIZONTAL_PX/ SIZE_OF_CELL;
-        int cellNumberY = Parameters.SIZE_VERTICAL_PX/ SIZE_OF_CELL;
-        this.CellsArray = new Cell[cellNumberX][cellNumberY];
+        int cellNumberX = NUMBER_OF_CELLS_X;
+        int cellNumberY = NUMBER_OF_CELLS_Y;
+        CellsArray = new Cell[cellNumberX][cellNumberY];
         for (int i=0; i<cellNumberX;i++) {
           for(int j=0; j<cellNumberY; j++) {
-              this.CellsArray[i][j] = new Cell(i* SIZE_OF_CELL, j* SIZE_OF_CELL, Color.WHITE,true);
+              CellsArray[i][j] = new Cell(i* SIZE_OF_CELL, j* SIZE_OF_CELL, Color.WHITE,true);
           }
         }
         // rewrite -- is order correct?
@@ -58,10 +55,28 @@ public class Field extends JPanel {
         fieldGUI.setVisible(true);
     }
 
-    public Cell getCellByCoordinates(int x, int y) {
+    public static Cell getCellByCoordinates(int x, int y) {
         return CellsArray[x][y];
     }
 
+    public void setCellsArrayFromActiveFigure(Figure activeFigure) {
+        for(int i=0; i<NUMBER_OF_CELLS_X; i++){
+            for(int j=0; j<NUMBER_OF_CELLS_Y; j++) {
+                if(!CellsArray[i][j].isEmpty() && !CellsArray[i][j].isCalcified()) {
+                    CellsArray[i][j].setEmpty(true);
+                    CellsArray[i][j].setColor(Color.WHITE);
+                }
+            }
+        }
+
+        for (int i=0; i< activeFigure.getNumberOfCells(); i++)
+        {
+            int x = activeFigure.getCellCoordinatesX()[i];
+            int y = activeFigure.getCellCoordinatesY()[i];
+            CellsArray[x][y].setEmpty(false);
+            CellsArray[x][y].setColor(activeFigure.getColor());
+        }
+    }
 
     public boolean isReducible(){
 

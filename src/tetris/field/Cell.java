@@ -8,11 +8,12 @@ public class Cell extends Rectangle {
     private Color color;
 
     private boolean isEmpty;
+    private boolean isCalcified;
 
-    private int cellX;
-    private int cellY;
-    private int cellW;
-    private int cellH;
+    private final int cellX;
+    private final int cellY;
+    private final int cellW;
+    private final int cellH;
 
 
 
@@ -25,17 +26,11 @@ public class Cell extends Rectangle {
         this.cellY = y ;
         this.cellW = SIZE_OF_CELL ;
         this.cellH = SIZE_OF_CELL;
+        this.isCalcified = false;
     }
     public Cell(int x, int y, Color color){
         this(x,y,color,true);
     }
-    /*
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(Color.RED);
-        g.fillRect(cellX,squareY,cellW,cellH);
-    }
-*/
 
     public Color getColor() {
         return color;
@@ -45,6 +40,7 @@ public class Cell extends Rectangle {
         this.color = color;
     }
 
+    @Override
     public boolean isEmpty() {
         return isEmpty;
     }
@@ -59,5 +55,13 @@ public class Cell extends Rectangle {
 
     public int getCellY() {
         return cellY;
+    }
+
+    public boolean isCalcified() {
+        return isCalcified;
+    }
+
+    public void setCalcified(boolean calcified) {
+        isCalcified = calcified;
     }
 }
