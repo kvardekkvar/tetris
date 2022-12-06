@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1adc87d-0187-4e01-8c4d-56bb15cf9516" name="Changes" comment="Add movement and rotations">
+    <list default="true" id="d1adc87d-0187-4e01-8c4d-56bb15cf9516" name="Changes" comment="Bugfixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tetris/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tetris/constants/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/constants/Parameters.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tetris/field/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/field/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetris/figures/Figure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/figures/Figure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetris/figures/PolyminoI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/figures/PolyminoI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetris/figures/PolyminoO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/figures/PolyminoO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetris/figures/PolyminoT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/figures/PolyminoT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetris/figures/PolyminoZ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/figures/PolyminoZ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tetris/utility/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/utility/Util.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,15 +35,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/liaombro/Desktop/prog/proj/tetr&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaMethodFindUsagesOptions.isSearchForTextOccurrences": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/Users/liaombro/Desktop/prog/proj/tetr",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Tetris" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
@@ -160,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670276298779</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Bugfixes">
+      <created>1670346620634</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670346620634</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -178,6 +180,22 @@
     <MESSAGE value="Create class model" />
     <MESSAGE value="Add basic graphics" />
     <MESSAGE value="Add movement and rotations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add movement and rotations" />
+    <MESSAGE value="Bugfixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfixes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="39" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/tetris/field/Field.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

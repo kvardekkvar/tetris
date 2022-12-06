@@ -10,7 +10,7 @@ import java.util.Random;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import static tetris.constants.Parameters.SIZE_OF_CELL;
+import static tetris.constants.Parameters.*;
 
 public class Game {
 
@@ -48,7 +48,7 @@ public class Game {
                         activeFigure.moveDown();
                         field.setCellsArrayFromActiveFigure(activeFigure);
                         field.repaint();
-                        if(!activeFigure.isMovable(Direction.DOWN) && field.isReducible()) {
+                        if(field.isReducible()) {
                             field.reduceAll();
                         }
                         Thread.sleep(500);
@@ -66,10 +66,10 @@ public class Game {
 
     public Figure newActiveFigure(){
         Random rand = new Random();
-        int type = rand.nextInt(4);
+        int type = isMock? 1 : rand.nextInt(4);
 
-        int XCoordinateActiveFigure = SIZE_OF_CELL/2;
-        int YCoordinateActiveFigure = 2;
+        int XCoordinateActiveFigure = NUMBER_OF_CELLS_X/2;
+        int YCoordinateActiveFigure = 1;
         // rewrite
 
         switch (type)
