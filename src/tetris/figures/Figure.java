@@ -16,35 +16,40 @@ public abstract class Figure {
     private int[] cellCoordinatesY;
     private final int numberOfCells;
     private final String type;
-
-    private double[] center;
     private final Color color;
     //private int orientation;
 
-    public Figure(int[] cellCoordinatesX, int[] cellCoordinatesY, double[] center, String type ) {
+    public Figure(int[] cellCoordinatesX, int[] cellCoordinatesY, String type ) {
         this.numberOfCells = cellCoordinatesX.length;
         this.cellCoordinatesX = cellCoordinatesX;
         this.cellCoordinatesY = cellCoordinatesY;
         this.type = type;
         this.color = Util.randomColor();
-        this.center = center;
     }
 
-
     public void rotate(String direction){
-        this.center = Util.calculateCenter(cellCoordinatesX, cellCoordinatesY);
+        double[] center = Util.calculateCenter(cellCoordinatesX, cellCoordinatesY);
 
         int sign;
         if (direction.equals(Direction.LEFT)) {
             sign = 1;
         } else {sign = -1;}
-        for (int i =0; i<numberOfCells;i++) {
+
+        int[] newCellCoordinatesX = new int[numberOfCells];
+        int[] newCellCoordinatesY = new int[numberOfCells];
+
+        // rewrite below -- looks ugly
+        for (int i = 0; i < numberOfCells; i++) {
             int temp = cellCoordinatesX[i];
-            cellCoordinatesX[i] = sign * cellCoordinatesY[i] + (int) (center[0] - sign * center[1]);
-            cellCoordinatesY[i] = -sign * temp + (int) (sign * center[0] + center[1]);
+
+            double addendumX = center[0] - sign * center[1];
+            double addendumY = sign * center[0] + center[1];
+            int addendumXInt = direction.equals(Direction.LEFT) ? (int) Math.floor(addendumX) : (int) Math.ceil(addendumX);
+            int addendumYInt = direction.equals(Direction.LEFT) ? (int) Math.floor(addendumY) : (int) Math.floor(addendumY);
+            newCellCoordinatesX[i] = sign * cellCoordinatesY[i] + addendumXInt;
+            newCellCoordinatesY[i] = -sign * temp + addendumYInt;
         }
-
-
+        setCellCoordinates(newCellCoordinatesX, newCellCoordinatesY);
     }
 
     public void rotateLeft() {
@@ -56,7 +61,7 @@ public abstract class Figure {
 
     public boolean isMovable(String direction) {
         //rewrite -- looks ugly
-        // bug -- только самые нижние клетки учитываются при движении вниз
+        //rewrite -- ideologically wrong (should be inside setter)
 
         switch (direction) {
             case Direction.LEFT: {
@@ -96,18 +101,19 @@ public abstract class Figure {
                 if(targetY>=NUMBER_OF_CELLS_Y) {calcify(); return false;}
 
                 for(int i = 0; i<cellCoordinatesX.length; i++) {
-                    Cell newCell = Field.getCellByCoordinates(cellCoordinatesX[i],targetY);
-                    int currentCoordinate = cellCoordinatesY[i];
-                    if(!newCell.isEmpty() && currentCoordinate + 1 == targetY) {
-                        calcify();
-                        return false;
+
+                    Cell newCell = Field.getCellByCoordinates(cellCoordinatesX[i], cellCoordinatesY[i] + 1);
+                        if (newCell.isCalcified()) {
+                            calcify();
+                            return false;
+                        }
                     }
-                }
                 return true;
+                }
+
             }
+            return true;
         }
-        return true;
-    }
 
     private void move(String direction){
         if(isMovable(direction)) {
@@ -147,6 +153,14 @@ public abstract class Figure {
     public void moveLeft(){
         move(Direction.LEFT);
     }
+
+    public void drop(){
+        while(isMovable(Direction.DOWN)) {
+            move(Direction.DOWN);
+        }
+    }
+
+
     public void calcify(){
         for(int i=0; i<numberOfCells; i++) {
             Field.getCellByCoordinates(cellCoordinatesX[i], cellCoordinatesY[i]).setCalcified(true);
@@ -162,17 +176,28 @@ public abstract class Figure {
         return cellCoordinatesX;
     }
 
-    public void setCellCoordinatesX(int[] cellCoordinatesX) {
-        this.cellCoordinatesX = cellCoordinatesX;
-    }
-
     public int[] getCellCoordinatesY() {
         return cellCoordinatesY;
     }
 
-    public void setCellCoordinatesY(int[] cellCoordinatesY) {
-        this.cellCoordinatesY = cellCoordinatesY;
+    public void setCellCoordinates(int[] cellCoordinatesX, int[] cellCoordinatesY){
+
+        boolean flag = true;
+        if (!Util.isInsideFieldX(cellCoordinatesX) || !Util.isInsideFieldY(cellCoordinatesY)) {
+        flag = false; }
+
+        for (int i=0;i<cellCoordinatesX.length;i++) {
+            if(Field.getCellByCoordinates(cellCoordinatesX[i],cellCoordinatesY[i]).isCalcified()) {
+                flag=false;
+            }
+        }
+            if(flag){
+
+            this.cellCoordinatesX = cellCoordinatesX;
+            this.cellCoordinatesY = cellCoordinatesY;
+        }
     }
+
 
     public String getType() {
         return type;

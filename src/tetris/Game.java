@@ -10,6 +10,8 @@ import java.util.Random;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import static tetris.constants.Parameters.SIZE_OF_CELL;
+
 public class Game {
 
     private Figure activeFigure;
@@ -66,7 +68,7 @@ public class Game {
         Random rand = new Random();
         int type = rand.nextInt(4);
 
-        int XCoordinateActiveFigure = 20;
+        int XCoordinateActiveFigure = SIZE_OF_CELL/2;
         int YCoordinateActiveFigure = 2;
         // rewrite
 
@@ -107,6 +109,9 @@ public class Game {
                 break;
             case KeyEvent.VK_P:
                 pause();
+                break;
+            case KeyEvent.VK_SPACE:
+                activeFigure.drop();
                 break;
         }
         field.setCellsArrayFromActiveFigure(activeFigure);

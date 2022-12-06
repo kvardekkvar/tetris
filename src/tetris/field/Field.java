@@ -79,11 +79,21 @@ public class Field extends JPanel {
     }
 
     public boolean isReducible(){
+        boolean flag = true;
+        for (int i =0; i< NUMBER_OF_CELLS_Y; i++){
 
-        return false;
+            for (int j =0; j< NUMBER_OF_CELLS_X; j++) {
+                if (CellsArray[i][j].isCalcified()) {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+
+        return flag;
     }
 
-    public void reduce(int row){
+    private void reduce(int row){
 
     }
 

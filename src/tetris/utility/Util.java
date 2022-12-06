@@ -4,6 +4,9 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.Random;
 
+import static tetris.constants.Parameters.NUMBER_OF_CELLS_X;
+import static tetris.constants.Parameters.NUMBER_OF_CELLS_Y;
+
 public class Util {
 
     public static Color randomColor(){
@@ -43,4 +46,13 @@ public class Util {
         center[1] = center[1]/coordinatesY.length;
         return center;
     }
+
+    public static boolean isInsideFieldX (int[] xCoordinates) {
+        return Arrays.stream(xCoordinates).allMatch(i -> i>=0 && i<NUMBER_OF_CELLS_X);
+    }
+    public static boolean isInsideFieldY (int[] yCoordinates) {
+        return Arrays.stream(yCoordinates).allMatch(i -> i>=0 && i<NUMBER_OF_CELLS_Y);
+    }
+
+
 }
