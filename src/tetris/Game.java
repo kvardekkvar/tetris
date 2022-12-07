@@ -18,8 +18,8 @@ public class Game {
     private final Field field;
 
     private boolean isPaused;
-    private final boolean isOver;
-
+    private boolean isOver;
+    private int cnt;
 
 
 
@@ -27,6 +27,7 @@ public class Game {
         this.field = new Field();
         this.isPaused = false;
         this.isOver = false;
+        this.cnt = 0;
     }
 
     public void run()  {
@@ -40,11 +41,13 @@ public class Game {
 
         try {
             while (!isOver) {
+                isOver = true;
+                cnt+=1;
                 activeFigure = newActiveFigure();
                 field.drawFigure(activeFigure);
                 while (activeFigure.isMovable(Direction.DOWN)) {
+                    isOver = false;
                     if (!isPaused) {
-                        //processUserInput();
                         activeFigure.moveDown();
                         field.setCellsArrayFromActiveFigure(activeFigure);
                         field.repaint();
@@ -55,10 +58,10 @@ public class Game {
                     } else {
                         System.out.println("Paused");
                         Thread.sleep(1000);
-                        //processUserInput();
                     }
                 }
             }
+            System.out.println("Committed " + cnt + " steps.");
         } catch (InterruptedException e) {
          throw new RuntimeException(e);
         }

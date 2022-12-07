@@ -1,5 +1,4 @@
 package tetris.field;
-import tetris.field.Cell;
 
 import javax.swing.*;
 
@@ -89,6 +88,9 @@ public class Field extends JPanel {
                     break;
                 }
             }
+            if(flag) {
+                break;
+            }
         }
 
         return flag;
@@ -100,9 +102,9 @@ public class Field extends JPanel {
                 c.setCalcified(false);
                 c.setColor(Color.white);
             }
-            for(int i = rowIndex; i>=0; i--) {
+            for(int i = rowIndex; i>0; i--) {
                 for (int j=0; j<NUMBER_OF_CELLS_X; j++) {
-                    cellSwap(j, i);
+                    cellSwap(i, j);
                 }
             }
 
@@ -110,11 +112,20 @@ public class Field extends JPanel {
 
     private void cellSwap(int row, int column) {
 
-        Cell c1 = getCellByCoordinates(row, column);
-        Cell c2 = getCellByCoordinates(row-1, column);
-        CellsArray[column][row] = c2;
-        CellsArray[column][row-1] = c1;
+        Cell c1 = getCellByCoordinates(column, row);
+        Cell c2 = getCellByCoordinates(column, row-1);
+        Color color1 = c1.getColor();
+        Color color2 = c2.getColor();
+        boolean isCalcified1 = c1.isCalcified();
+        boolean isCalcified2 = c2.isCalcified();
+        c1.setColor(color2);
+        c2.setColor(color1);
+        c1.setCalcified(isCalcified2);
+        c2.setCalcified(isCalcified1);
 
+        //CellsArray[column][row] = c2;
+        //CellsArray[column][row-1] = c1;
+        //System.out.println("Swap " + row + " " + column + " upwards");
     }
 
     public void reduceAll() {
@@ -123,7 +134,7 @@ public class Field extends JPanel {
             List<Integer> rows = new ArrayList<>();
             for (int i = NUMBER_OF_CELLS_Y-1; i >= 0; i--) {
                 Cell[] row = transposedArray[i];
-                if (Arrays.stream(row).allMatch(c -> c.isCalcified())) {
+                if (Arrays.stream(row).allMatch(Cell::isCalcified)) {
                     rows.add(i);
                     reduce(i);
                 }

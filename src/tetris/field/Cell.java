@@ -12,10 +12,6 @@ public class Cell extends Rectangle {
 
     private final int cellX;
     private final int cellY;
-    private final int cellW;
-    private final int cellH;
-
-
 
 
     public Cell(int x, int y, Color color, boolean isEmpty){
@@ -24,12 +20,7 @@ public class Cell extends Rectangle {
         this.isEmpty = isEmpty;
         this.cellX = x ;
         this.cellY = y ;
-        this.cellW = SIZE_OF_CELL ;
-        this.cellH = SIZE_OF_CELL;
         this.isCalcified = false;
-    }
-    public Cell(int x, int y, Color color){
-        this(x,y,color,true);
     }
 
     public Color getColor() {

@@ -15,7 +15,6 @@ public abstract class Figure {
     private int[] cellCoordinatesX;
     private int[] cellCoordinatesY;
     private final int numberOfCells;
-    private final String type;
     private final Color color;
     //private int orientation;
 
@@ -23,7 +22,6 @@ public abstract class Figure {
         this.numberOfCells = cellCoordinatesX.length;
         this.cellCoordinatesX = cellCoordinatesX;
         this.cellCoordinatesY = cellCoordinatesY;
-        this.type = type;
         this.color = Util.randomColor();
     }
 
@@ -45,7 +43,7 @@ public abstract class Figure {
             double addendumX = center[0] - sign * center[1];
             double addendumY = sign * center[0] + center[1];
             int addendumXInt = direction.equals(Direction.LEFT) ? (int) Math.floor(addendumX) : (int) Math.ceil(addendumX);
-            int addendumYInt = direction.equals(Direction.LEFT) ? (int) Math.floor(addendumY) : (int) Math.floor(addendumY);
+            int addendumYInt = (int) Math.floor(addendumY);
             newCellCoordinatesX[i] = sign * cellCoordinatesY[i] + addendumXInt;
             newCellCoordinatesY[i] = -sign * temp + addendumYInt;
         }
@@ -184,11 +182,13 @@ public abstract class Figure {
 
         boolean flag = true;
         if (!Util.isInsideFieldX(cellCoordinatesX) || !Util.isInsideFieldY(cellCoordinatesY)) {
-        flag = false; }
+        return;
+        }
 
         for (int i=0;i<cellCoordinatesX.length;i++) {
             if(Field.getCellByCoordinates(cellCoordinatesX[i],cellCoordinatesY[i]).isCalcified()) {
                 flag=false;
+                break;
             }
         }
             if(flag){
@@ -199,9 +199,6 @@ public abstract class Figure {
     }
 
 
-    public String getType() {
-        return type;
-    }
 
     public Color getColor() {
         return color;
